@@ -26,37 +26,54 @@ export default function Products(props: ProductsProps) {
     }
   );
 
-  if (isLoading) {
-    return <Loading animation="wave" />;
-  }
-
   if (error) {
     return <div>Algo deu errado</div>;
   }
 
   return (
     <Main container>
-      <Grid
-        item
-        container
-        xs={12}
-        sm={12}
-        md={11}
-        lg={10}
-        justifyContent="center"
-      >
-        {data.map((todo: any) => (
-          <ProductCard
-            id={todo.id}
-            key={todo}
-            name={todo.name}
-            photo={todo.photo}
-            price={todo.price}
-            description={todo.description}
-            setCart={props.setCart}
-          />
-        ))}
-      </Grid>
+      {isLoading ? (
+        <Grid
+          item
+          container
+          xs={12}
+          sm={12}
+          md={11}
+          lg={10}
+          justifyContent="center"
+        >
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+          <Loading animation="wave" />
+        </Grid>
+      ) : (
+        <Grid
+          item
+          container
+          xs={12}
+          sm={12}
+          md={11}
+          lg={10}
+          justifyContent="center"
+        >
+          {data.map((todo: any) => (
+            <ProductCard
+              id={todo.id}
+              key={todo}
+              name={todo.name}
+              photo={todo.photo}
+              price={todo.price}
+              description={todo.description}
+              setCart={props.setCart}
+            />
+          ))}
+        </Grid>
+      )}
     </Main>
   );
 }

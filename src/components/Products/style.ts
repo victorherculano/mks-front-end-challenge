@@ -7,5 +7,12 @@ export const Main = styled(Grid)`
   align-items: center;
 `;
 export const Loading = styled(Skeleton)`
-  margin: 50px 0 50px;
+  width: 218px;
+  height: 285px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+  justify-content: center;
+  align-items: flex-end;
+  margin: 10px 10px;
+  cursor: default;
 `;
