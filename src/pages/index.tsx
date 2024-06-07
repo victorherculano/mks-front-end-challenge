@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import Header from "@/components/templates/Header";
 import Footer from "@/components/templates/Footer";
 import Products from "@/components/Products";
-import { Container } from "./style";
+import { Container } from "../styles/style";
 import { useState } from "react";
 
 export default function Home() {

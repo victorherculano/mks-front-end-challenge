@@ -5,7 +5,6 @@ import {
   CloseButton,
   CloseButton2,
   Content,
-  CustomScrollBar,
   EndBuy,
   Heading,
   Main,
@@ -15,7 +14,6 @@ import {
   ProductSession,
   QuantityMenu,
   QuantitySelect,
-  ScrollBar,
   ShoppingBtn,
   TotalPrice,
 } from "./style";
@@ -35,7 +33,7 @@ export default function ShoppingCar(props: ProductProps) {
           item.id === id ? { ...item, qty: item.qty - 1 } : item
         );
         if (decreaseAmount.qty <= 1) {
-          return updatecart.filter((item) => item.id !== id);
+          return updatecart.filter((item: any) => item.id !== id);
         }
         return updatecart;
       }
@@ -60,8 +58,8 @@ export default function ShoppingCar(props: ProductProps) {
   };
 
   const removeItem = (id: number) => {
-    props.setCart((prevState) => {
-      return prevState.filter((item) => item.id !== id);
+    props.setCart((prevState: any) => {
+      return prevState.filter((item: any) => item.id !== id);
     });
   };
 
@@ -73,7 +71,7 @@ export default function ShoppingCar(props: ProductProps) {
         <img src="images/shopping-car.svg" alt="shopping-car" />
         &nbsp;
         <p>
-          {props.cart.reduce((acc, product) => {
+          {props.cart.reduce((acc: any, product: any) => {
             return acc + product.qty;
           }, 0)}
         </p>
@@ -103,7 +101,7 @@ export default function ShoppingCar(props: ProductProps) {
             </Grid>
           </Heading>
           <ProductSession container item xs={11} sm={10} md={10} lg={10}>
-            {props.cart.map((product) => {
+            {props.cart.map((product: any) => {
               return (
                 <Product
                   container
@@ -181,7 +179,7 @@ export default function ShoppingCar(props: ProductProps) {
               justifyContent="flex-end"
             >
               R$
-              {props.cart.reduce((acc, product) => {
+              {props.cart.reduce((acc: any, product: any) => {
                 return acc + product.qty * product.price;
               }, 0)}
             </Grid>
