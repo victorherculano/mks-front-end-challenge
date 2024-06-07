@@ -21,16 +21,25 @@ interface CardProps {
 
 export default function ProductCard(props: CardProps) {
   function addToCart(id: number, photo: string, name: string, price: string) {
-    props.setCart((prevState: any) => [
-      ...prevState,
-      {
-        id,
-        photo,
-        name,
-        price,
-        qty: 1,
-      },
-    ]);
+    props.setCart((prevState: any) => {
+      const existItem = prevState.find((item: any) => item.id === id);
+      if (existItem) {
+        return prevState.map((item: any) =>
+          item.id === id ? { ...item, qty: (item.qty += 1) } : item
+        );
+      } else {
+        return [
+          ...prevState,
+          {
+            id,
+            photo,
+            name,
+            price,
+            qty: 1,
+          },
+        ];
+      }
+    });
   }
   return (
     <motion.div whileHover={{ scale: 1.1 }}>
